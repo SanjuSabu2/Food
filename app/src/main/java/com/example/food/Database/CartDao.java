@@ -9,13 +9,13 @@ import java.util.List;
 @Dao
 public interface CartDao {
     @Insert
-    public void addToCart(Cart cart);
+    void addToCart(Cart cart);
 
     @Query("SELECT * FROM MyCart")
-    public List<Cart> getData();
+    List<Cart> getData();
 
     @Query("SELECT EXISTS (SELECT 1 FROM mycart WHERE id=:id)")
-    public int isAddToCart(String id);
+    int isAddToCart(String id);
 
     @Query("select COUNT (*) from MyCart")
     int countCart();

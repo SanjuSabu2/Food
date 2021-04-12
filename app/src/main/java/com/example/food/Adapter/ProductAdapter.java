@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    private ArrayList<ResponseArray> myProductData;
-    private Context context;
+    private final ArrayList<ResponseArray> myProductData;
+    private final Context context;
 
     public ProductAdapter(ArrayList<ResponseArray> myProductData, Context context) {
         this.myProductData = myProductData;
@@ -40,16 +40,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(myProductData.get(position).getImage()).into(holder.image);
-        holder.price.setText("₹ "+String.valueOf(myProductData.get(position).getPrice()));
+        holder.price.setText("₹ "+ myProductData.get(position).getPrice());
         holder.title.setText(myProductData.get(position).getTitle());
         holder.desc.setText(myProductData.get(position).getDescription());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AddtocartActivity.class);
-            String imageurl = myProductData.get(position).getImage();
-            String prprice = String.valueOf(myProductData.get(position).getPrice());
-            intent.putExtra("imageurl",imageurl);
-            intent.putExtra("prname",myProductData.get(position).getTitle());
-            intent.putExtra("prprice",prprice);
+            String imageUrl = myProductData.get(position).getImage();
+            String prPrice = String.valueOf(myProductData.get(position).getPrice());
+            intent.putExtra("imageUrl",imageUrl);
+            intent.putExtra("prName",myProductData.get(position).getTitle());
+            intent.putExtra("prPrice",prPrice);
             intent.putExtra("id",myProductData.get(position).getId());
             intent.putExtra("desc",myProductData.get(position).getDescription());
             context.startActivity(intent);

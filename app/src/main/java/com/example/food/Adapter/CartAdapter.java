@@ -22,8 +22,8 @@ import com.example.food.R;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
-    private List<Cart>carts;
-    private Context context;
+    private final List<Cart>carts;
+    private final Context context;
     TextView cartEmpty;
 
     public CartAdapter(List<Cart> carts, Context context, TextView cartempty) {
@@ -47,7 +47,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.prprice.setText("₹ "+carts.get(position).getPrice());
         holder.prdesc.setText(carts.get(position).getDescript());
         holder.prtitle.setText(carts.get(position).getName());
-        holder.quantity.setText("x"+String.valueOf(MainActivity.mydb.cartDao().returncount(carts.get(position).getId())));
+        holder.quantity.setText("x"+ MainActivity.mydb.cartDao().returncount(carts.get(position).getId()));
         holder.deletbtn.setOnClickListener(v -> {
             carts.remove(position);
             notifyDataSetChanged();
@@ -77,9 +77,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView prImage;
-        private TextView prprice,prtitle,prdesc,decrementButton,quantity,incrementButton;
-        private ImageButton deletbtn;
+        private final ImageView prImage;
+        private final TextView prprice;
+        private final TextView prtitle;
+        private final TextView prdesc;
+        private final TextView decrementButton;
+        private final TextView quantity;
+        private final TextView incrementButton;
+        private final ImageButton deletbtn;
 
 
         public ViewHolder(@NonNull View itemView) {
