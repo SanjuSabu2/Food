@@ -43,6 +43,7 @@
             app:srcCompat="@drawable/backbutton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <TextView
         android:id="@+id/txt2prtitle"
         android:layout_width="wrap_content"
@@ -174,7 +175,6 @@
         android:layout_marginBottom="44dp"
         android:background="@drawable/addtocart"
         android:text="Add to Cart"
-
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -206,4 +206,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/txt2prtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txt2prtitle"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
