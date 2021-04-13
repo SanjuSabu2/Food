@@ -19,6 +19,8 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notif" />
         <activity
             android:name=".MyCartActivity"
             android:screenOrientation="portrait"

@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
         mydb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "MyCart").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         String androidId = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
-//        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-//        Log.d("TAG", "FCM token: " + refreshedToken);
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("TAG", "FCM token: " + refreshedToken);
 //        Log.d("IMEI", "IMEI NO." + deviceId);
         Log.d("ID", "Android ID" + androidId);
 
