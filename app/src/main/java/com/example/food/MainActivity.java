@@ -25,6 +25,7 @@ import com.example.food.Adapter.ProductAdapter;
 import com.example.food.Database.MyDatabase;
 import com.example.food.Model.ProductData;
 import com.example.food.Model.ResponseArray;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         cartcount = findViewById(R.id.cartcount);
         search = findViewById(R.id.search_bar);
 
-        recyclerView.hasFixedSize();
+//        recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         getdata();
 
@@ -65,101 +66,101 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mydb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "MyCart").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                Filter = new ArrayList<ResponseArray>();
-//                for (int i = 0; i < Response.size(); i++) {
-//                    if (Response.get(i).getTitle().contains(s)) {
-//                        Filter.add(Response.get(i));
-//                    }
+//        search.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+////                Filter = new ArrayList<ResponseArray>();
+////                for (int i = 0; i < Response.size(); i++) {
+////                    if (Response.get(i).getTitle().contains(s)) {
+////                        Filter.add(Response.get(i));
+////                    }
+////                }
+////                adapter = new ProductAdapter(Filter, MainActivity.this);
+////                recyclerView.setAdapter(adapter);
+//
+//
+////                (MyRetrofit.getMyApi().getProductData("1","10")).enqueue(new Callback<ProductData>() {
+////                    @Override
+////                    public void onResponse(Call<ProductData> call, Response<ProductData> response) {
+//
+////                        Resp = new ArrayList<ResponseArray>();
+////                        myProductData = response.body();
+////                        if (myProductData.getStatus() == 100) {
+////                            if(myProductData.getResponseArray().size() > 0) {
+////                                Resp.addAll(response.body().getResponseArray());
+////                                for(int i=0;i<Resp.size();i++) {
+////                                    if (Resp.get(i).getTitle().contains(s)) {
+////                                        Filter.add(Resp.get(i));
+////                                    }
+////                                }
+////                                adapter = new ProductAdapter(Filter, MainActivity.this);
+////                                recyclerView.setAdapter(adapter);
+////
+////                            }
+////                            else
+////                                Toast.makeText(MainActivity.this,"No Data found", Toast.LENGTH_SHORT).show();
+////                        }
+////                        else
+////                            Toast.makeText(MainActivity.this,"Something went wrong",Toast.LENGTH_SHORT).show();
+////                    }
+////
+////                    @Override
+////                    public void onFailure(Call<ProductData> call, Throwable t) {
+////                        Log.d("response", t.getStackTrace().toString());
+////
+////
+////                    }
+////                });
+//
+//
+//            }
+//
+//            @RequiresApi(api = Build.VERSION_CODES.M)
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                f=1;
+//                if(s.length()==3){
+//                    closeKeyboard();
 //                }
-//                adapter = new ProductAdapter(Filter, MainActivity.this);
-//                recyclerView.setAdapter(adapter);
-
-
-//                (MyRetrofit.getMyApi().getProductData("1","10")).enqueue(new Callback<ProductData>() {
-//                    @Override
-//                    public void onResponse(Call<ProductData> call, Response<ProductData> response) {
-
-//                        Resp = new ArrayList<ResponseArray>();
-//                        myProductData = response.body();
-//                        if (myProductData.getStatus() == 100) {
-//                            if(myProductData.getResponseArray().size() > 0) {
-//                                Resp.addAll(response.body().getResponseArray());
-//                                for(int i=0;i<Resp.size();i++) {
-//                                    if (Resp.get(i).getTitle().contains(s)) {
-//                                        Filter.add(Resp.get(i));
-//                                    }
-//                                }
-//                                adapter = new ProductAdapter(Filter, MainActivity.this);
-//                                recyclerView.setAdapter(adapter);
-//
-//                            }
-//                            else
-//                                Toast.makeText(MainActivity.this,"No Data found", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(MainActivity.this,"Something went wrong",Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ProductData> call, Throwable t) {
-//                        Log.d("response", t.getStackTrace().toString());
-//
-//
-//                    }
-//                });
-
-
-            }
-
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void afterTextChanged(Editable s) {
-                f=1;
-                if(s.length()==3){
-                    closeKeyboard();
-                }
-                filter(s.toString());
-            }
-        });
+//                filter(s.toString());
+//            }
+//        });
     }
-    @Override
-    public void onBackPressed(){
-        if (f==1){
-            search.setText("");
-            f=0;
-        }
-        else
-            finish();
-    }
+//    @Override
+//    public void onBackPressed(){
+//        if (f==1){
+//            search.setText("");
+//            f=0;
+//        }
+//        else
+//            finish();
+//    }
 
 
-    private void closeKeyboard()
-    {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+//    private void closeKeyboard()
+//    {
+//        View view = this.getCurrentFocus();
+//        if (view != null) {
+//            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//            manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//        }
+//    }
 
-    private void filter(String text) {
-        ArrayList<ResponseArray> filteredList = new ArrayList<ResponseArray>();
-        for (ResponseArray item : Response) {
-            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(item);
-            }
-        }
-        adapter = new ProductAdapter(filteredList, MainActivity.this);
-        recyclerView.setAdapter(adapter);
-    }
+//    private void filter(String text) {
+//        ArrayList<ResponseArray> filteredList = new ArrayList<ResponseArray>();
+//        for (ResponseArray item : Response) {
+//            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+//                filteredList.add(item);
+//            }
+//        }
+//        adapter = new ProductAdapter(filteredList, MainActivity.this);
+//        recyclerView.setAdapter(adapter);
+//    }
 
     private void updatacartcount() {
         if (cartcount == null)

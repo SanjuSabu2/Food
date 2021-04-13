@@ -51,12 +51,9 @@ public class MyCartActivity extends AppCompatActivity {
 
     private void updatacartcount() {
         int count=cartAdapter.getItemCount();
-        if (count==0){
-            tvCount.setVisibility(View.INVISIBLE);
-        }else {
-//            tvCount.setText(String.valueOf(MainActivity.mydb.cartDao().returncartcount()));
-//            cartcount.setText(String.valueOf(mydb.cartDao().returncartcount()));
-        }
+//        if (count==0){
+//            tvCount.setVisibility(View.INVISIBLE);
+//        }
     }
 
     private void getCartData() {
@@ -73,9 +70,10 @@ public class MyCartActivity extends AppCompatActivity {
 //                tvCount.setVisibility(View.INVISIBLE);
                 cartEmpty.setVisibility(View.VISIBLE);
                 cardView.setVisibility(View.INVISIBLE);
-            }else {
-//                tvCount.setText(String.valueOf(carts.size()));
             }
+//            else {
+////                tvCount.setText(String.valueOf(carts.size()));
+//            }
         }
     };
     public BroadcastReceiver sMessage=new BroadcastReceiver() {

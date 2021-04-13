@@ -43,7 +43,6 @@
             app:srcCompat="@drawable/backbutton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <TextView
         android:id="@+id/txt2prtitle"
         android:layout_width="wrap_content"
