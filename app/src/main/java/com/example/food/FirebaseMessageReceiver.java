@@ -23,15 +23,15 @@ public class FirebaseMessageReceiver extends FirebaseMessagingService {
                     remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
         }
     }
-//    private RemoteViews getCustomDesign(String title, String message) {
-//        RemoteViews remoteViews = new RemoteViews(
-//                getApplicationContext().getPackageName(),
-//                R.layout.notification);
-//        remoteViews.setTextViewText(R.id.title, title);
-//        remoteViews.setTextViewText(R.id.message, message);
-//        remoteViews.setImageViewResource(R.id.icon, R.drawable.notif);
-//        return remoteViews;
-//    }
+    private RemoteViews getCustomDesign(String title, String message) {
+        RemoteViews remoteViews = new RemoteViews(
+                getApplicationContext().getPackageName(),
+                R.layout.notification);
+        remoteViews.setTextViewText(R.id.title, title);
+        remoteViews.setTextViewText(R.id.message, message);
+        remoteViews.setImageViewResource(R.id.icon, R.drawable.notif);
+        return remoteViews;
+    }
 
     private void showNotification(String title, String message) {
         Intent intent = new Intent(this, MainActivity.class);
