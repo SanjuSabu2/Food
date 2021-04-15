@@ -43,11 +43,12 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         Log.e("Working?", "0");
-
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup itemView = (ViewGroup) inflater.inflate(R.layout.item, container, false);
         ImageView imageView = itemView.findViewById(R.id.imageViewMain);
-        Glide.with(context).load(images.get(position)).into(imageView);
+
+//        imageView.setImageResource(images.get(position));
+//        Glide.with(context).load(images.get(position)).into(imageView);
         return itemView;
     }
     @Override
