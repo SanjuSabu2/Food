@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     public static MyDatabase mydb;
     ProductData myProductData;
     TelephonyManager telephonyManager ;
+    ProgressBar progressBar;
+
 
 
 
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         cartbtn = findViewById(R.id.cart_btn);
         cartcount = findViewById(R.id.cartcount);
         search = findViewById(R.id.search_bar);
+        progressBar = findViewById(R.id.progressBar);
 //        deviceId();
 //        String deviceId = telephonyManager.getDeviceId();
 
@@ -174,10 +178,12 @@ public class MainActivity extends AppCompatActivity {
         (MyRetrofit.getMyApi().getProductData("0", "10")).enqueue(new Callback<ProductData>() {
             @Override
             public void onResponse(Call<ProductData> call, Response<ProductData> response) {
+                progressBar.setVisibility(View.VISIBLE);
                 Response = new ArrayList<ResponseArray>();
                 myProductData = response.body();
                 if (myProductData.getStatus() == 100) {
                     if (myProductData.getResponseArray().size() > 0) {
+                        progressBar.setVisibility(View.INVISIBLE);
                         Response.addAll(response.body().getResponseArray());
                         adapter = new ProductAdapter(Response, MainActivity.this);
                         recyclerView.setAdapter(adapter);
