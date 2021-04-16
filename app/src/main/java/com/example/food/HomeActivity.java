@@ -29,42 +29,6 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<ResponseArray> ResponseArrayData;
     Timer timer;
 
-//    ViewPager mViewPager;
-//    int[] images = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,};
-//    ViewPagerAdapter mViewPagerAdapter;
-//    Timer timer;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home);
-//
-//
-//        mViewPager = (ViewPager) findViewById(R.id.viewPagerMain);
-//
-//
-//        mViewPagerAdapter = new ViewPagerAdapter(HomeActivity.this, images);
-//
-//
-//        mViewPager.setAdapter(mViewPagerAdapter);
-//
-//        TimerTask timerTask = new TimerTask() {
-//            @Override
-//            public void run() {
-//                mViewPager.post(new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        mViewPager.setCurrentItem((mViewPager.getCurrentItem() + 1) % images.length);
-//                    }
-//                });
-//            }
-//        };
-//        timer = new Timer();
-//        timer.schedule(timerTask, 3000, 3000);
-//    }
-//}
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,44 +84,3 @@ public class HomeActivity extends AppCompatActivity {
     }
 }
 
-//public class MainActivity extends AppCompatActivity {
-//
-//    ViewPager mViewPager;
-//
-//
-//    int[] images = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,};
-//
-//
-//    ViewPagerAdapter mViewPagerAdapter;
-//
-//    Timer timer;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-
-//        mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
-//
-
-//        mViewPagerAdapter = new ViewPagerAdapter(MainActivity.this, images);
-//
-//
-//        mViewPager.setAdapter(mViewPagerAdapter);
-
-//        TimerTask timerTask = new TimerTask() {
-//            @Override
-//            public void run() {
-//                mViewPager.post(new Runnable(){
-//
-//                    @Override
-//                    public void run() {
-//                        mViewPager.setCurrentItem((mViewPager.getCurrentItem()+1)%images.length);
-//                    }
-//                });
-//            }
-//        };
-//        timer = new Timer();
-//        timer.schedule(timerTask, 3000, 3000);
-//    }
-//}

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.example.food.HomeActivity;
 import com.example.food.R;
 
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.Objects;
 
 public class ViewPagerAdapter extends PagerAdapter {
     Context context;
-//    int[] images;
     ArrayList<String> images;
     LayoutInflater mLayoutInflater;
 
