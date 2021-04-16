@@ -2,11 +2,10 @@ package com.example.food;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,11 +13,8 @@ import com.example.food.ViewPager.API.RetrofitClient;
 import com.example.food.ViewPager.Model.MainModel;
 import com.example.food.ViewPager.Model.ResponseArray;
 import com.example.food.ViewPager.ViewPagerAdapter;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,11 +29,48 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<ResponseArray> ResponseArrayData;
     Timer timer;
 
+//    ViewPager mViewPager;
+//    int[] images = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,};
+//    ViewPagerAdapter mViewPagerAdapter;
+//    Timer timer;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_home);
+//
+//
+//        mViewPager = (ViewPager) findViewById(R.id.viewPagerMain);
+//
+//
+//        mViewPagerAdapter = new ViewPagerAdapter(HomeActivity.this, images);
+//
+//
+//        mViewPager.setAdapter(mViewPagerAdapter);
+//
+//        TimerTask timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                mViewPager.post(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        mViewPager.setCurrentItem((mViewPager.getCurrentItem() + 1) % images.length);
+//                    }
+//                });
+//            }
+//        };
+//        timer = new Timer();
+//        timer.schedule(timerTask, 3000, 3000);
+//    }
+//}
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        mViewPager = (ViewPager) findViewById(R.id.viewPagerMain);
         RetrofitClient.getMyApi().getImages().enqueue(new Callback<MainModel>() {
             @Override
             public void onResponse(Call<MainModel> call, retrofit2.Response<MainModel> response) {
@@ -46,24 +79,25 @@ public class HomeActivity extends AppCompatActivity {
                 String status = response.body().getStatus().toString();
                 if (status.equalsIgnoreCase("100")) {
                     ResponseArrayData.add(response.body().getResponseArray());
-                    List<String> bannerdata;
+                    ArrayList<String> bannerdata;
                     bannerdata = ResponseArrayData.get(0).getBannerImages();
+                    Log.e("Working", String.valueOf(bannerdata.size()));
                     mViewPagerAdapter = new ViewPagerAdapter(HomeActivity.this, bannerdata);
                     mViewPager.setAdapter(mViewPagerAdapter);
 
                     TimerTask timerTask = new TimerTask() {
                         @Override
                         public void run() {
-                            mViewPager.post(new Runnable(){
+                            mViewPager.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mViewPager.setCurrentItem((mViewPager.getCurrentItem()+1)%bannerdata.size());
+                                    mViewPager.setCurrentItem((mViewPager.getCurrentItem() + 1) % bannerdata.size());
                                 }
                             });
                         }
                     };
                     timer = new Timer();
-                    timer.schedule(timerTask, 3000, 3000);
+                    timer.schedule(timerTask, 1000, 3000);
                 }
 
             }
@@ -85,3 +119,45 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 }
+
+//public class MainActivity extends AppCompatActivity {
+//
+//    ViewPager mViewPager;
+//
+//
+//    int[] images = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,};
+//
+//
+//    ViewPagerAdapter mViewPagerAdapter;
+//
+//    Timer timer;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//
+
+//        mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+//
+
+//        mViewPagerAdapter = new ViewPagerAdapter(MainActivity.this, images);
+//
+//
+//        mViewPager.setAdapter(mViewPagerAdapter);
+
+//        TimerTask timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                mViewPager.post(new Runnable(){
+//
+//                    @Override
+//                    public void run() {
+//                        mViewPager.setCurrentItem((mViewPager.getCurrentItem()+1)%images.length);
+//                    }
+//                });
+//            }
+//        };
+//        timer = new Timer();
+//        timer.schedule(timerTask, 3000, 3000);
+//    }
+//}

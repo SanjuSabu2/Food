@@ -2,6 +2,7 @@ package com.example.food.ViewPager.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public class ResponseArray {
 
     @SerializedName("banner_images")
     @Expose
-    private List<String> bannerImages = null;
+    private ArrayList<String> bannerImages = null;
     @SerializedName("android_app_version")
     @Expose
     private String androidAppVersion;
@@ -23,11 +24,11 @@ public class ResponseArray {
     @Expose
     private String iosAppLink;
 
-    public List<String> getBannerImages() {
+    public ArrayList<String> getBannerImages() {
         return bannerImages;
     }
 
-    public void setBannerImages(List<String> bannerImages) {
+    public void setBannerImages(ArrayList<String> bannerImages) {
         this.bannerImages = bannerImages;
     }
 
