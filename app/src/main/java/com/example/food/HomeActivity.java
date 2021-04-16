@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class HomeActivity extends AppCompatActivity {
-    Button appButton;
+    Button appButton, pdfButton1, pdfButton2;
     MainModel myImage;
     ViewPager mViewPager;
     ViewPagerAdapter mViewPagerAdapter;
@@ -72,7 +72,30 @@ public class HomeActivity extends AppCompatActivity {
             }
 
         });
-
+        pdfButton1 = findViewById(R.id.pdfButton1);
+        pdfButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, PdfActivity.class);
+                String url = "http://www.pdf995.com/samples/pdf.pdf";
+                String pdfName = "PDF 1";
+                intent.putExtra("url", url);
+                intent.putExtra("pdfName", pdfName);
+                startActivity(intent);
+            }
+        });
+        pdfButton2 = findViewById(R.id.pdfButton2);
+        pdfButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, PdfActivity.class);
+                String url = "https://www.antennahouse.com/hubfs/xsl-fo-sample/pdf/basic-link-1.pdf?hsLang=en";
+                String pdfName = "PDF 2";
+                intent.putExtra("url", url);
+                intent.putExtra("pdfName", pdfName);
+                startActivity(intent);
+            }
+        });
         appButton = findViewById(R.id.appButton);
         appButton.setOnClickListener(new View.OnClickListener() {
             @Override
