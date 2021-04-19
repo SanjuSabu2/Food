@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, PdfActivity.class);
-                String url = "http://www.pdf995.com/samples/pdf.pdf";
+                String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
                 String pdfName = "PDF 1";
                 intent.putExtra("url", url);
                 intent.putExtra("pdfName", pdfName);
